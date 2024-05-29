@@ -32,11 +32,12 @@ async def addTeam(ctx, args, guild_to_auction):
     await ctx.send('Budget should be a number, eg: 100')
     return
 
-  guild_to_auction[guild_id].teams[team_acronym] = float(budget)
   if team_acronym in guild_to_auction[guild_id].teams:
+    guild_to_auction[guild_id].teams[team_acronym] = float(budget)
     await ctx.send('Updating limit for the team: ' + team_acronym +
-                   "'s budget to '" + budget)
+                   "'s budget to " + budget)
   else:
+    guild_to_auction[guild_id].teams[team_acronym] = float(budget)
     await ctx.send('Team added with name: ' + team_acronym + ' and budget: ' +
                    budget)
   return
