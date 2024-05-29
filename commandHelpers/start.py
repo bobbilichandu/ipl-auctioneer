@@ -22,7 +22,16 @@ async def startAuction(ctx, args, guild_to_auction: Dict[str, GuildAuction]):
 
   guild_to_auction[guild_id] = GuildAuction(guild_id, uuid.uuid4(),
                                             ctx.channel.id,
-                                            datetime.datetime.now())
+                                            datetime.datetime.now(),
+                                            ctx.author.id)
   await ctx.send("Started an auction with Auction ID: " +
                  str(guild_to_auction[guild_id].auction_id))
+  await ctx.send("Owner of the auction is: " + "<@" +
+                 str(guild_to_auction[guild_id].auction_owner) + ">")
+  await ctx.send("Please add teams and base prices using addTeam command" +
+                 "\n" + "usage: \n > addTeam <team_name> <base_price>")
+  await ctx.send(
+      "You can also add team representatives using addRepresentative command" +
+      "\n" +
+      "usage: \n > addRepresentative <team_name> <team_representative_name")
   return
