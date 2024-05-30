@@ -3,7 +3,7 @@ async def addTeam(ctx, args, guild_to_auction):
     await ctx.send(
         'Please provide a valid command. Command **addTeam** only takes 2 values'
         + 'Team acronyms and the overall budget in crores' + '\n' +
-        'Example: \n > addTeam CSK 100')
+        'Example: \n > $auction addTeam CSK 100')
     return
 
   guild_id = ctx.guild.id

@@ -3,7 +3,7 @@ async def addRepresentative(ctx, args, guild_to_auction):
     await ctx.send(
         'Please provide a valid command. Command **addRepresentative** only takes 2 values'
         + 'Team acronyms and user tagged' + '\n' +
-        'Example: \n > addTeam CSK @user_id')
+        'Example: \n > $auction addRepresentative CSK @user_id')
     return
 
   guild_id = ctx.guild.id
@@ -47,7 +47,7 @@ async def addRepresentative(ctx, args, guild_to_auction):
 
 
 def getRepresentativesMessage(guild_to_auction, team_acronym, guild_id):
-  message = "Representatives for the team: " + team_acronym + "are: "
+  message = "Representatives for the team: " + team_acronym + " are: "
   for rep in guild_to_auction[guild_id].team_representatives[team_acronym]:
     message += rep + " "
   return message

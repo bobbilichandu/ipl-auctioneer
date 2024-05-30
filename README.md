@@ -14,8 +14,10 @@ Discord bot that can conduct auctions
 
 # TODO
 
-- [ ] Add remove team
-- [ ] Add remove representative
+- [x] Add remove team
+- [x] Add remove representative
+- [ ] Add list teams
+- [ ] Add list representatives
 - [ ] Get list of players in CSV format (atleast 350 players)
 - [ ] Add read players and add them to players list
 - [ ] Bidding using discord public threads
