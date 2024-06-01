@@ -8,6 +8,8 @@ from discord.ext import commands
 from auction.GuildAuction import GuildAuction
 from commandHelpers.addRepresentative import addRepresentative
 from commandHelpers.addTeam import addTeam
+from commandHelpers.listRepresentatives import listRepresentatives
+from commandHelpers.listTeams import listTeams
 from commandHelpers.removeRepresentative import removeRepresentative
 from commandHelpers.removeTeam import removeTeam
 from commandHelpers.start import startAuction
@@ -58,6 +60,14 @@ async def auction(ctx, *args):
 
   elif args[0] == 'removeRepresentative':
     await removeRepresentative(ctx, args, guild_to_auction)
+    return
+
+  elif args[0] == 'listTeams':
+    await listTeams(ctx, args, guild_to_auction)
+    return
+
+  elif args[0] == 'listRepresentatives':
+    await listRepresentatives(ctx, args, guild_to_auction, bot)
     return
 
   else:

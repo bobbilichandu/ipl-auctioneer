@@ -1,5 +1,5 @@
-from auction.enums.Tier import Tier
 from auction.enums.PlayerRole import PlayerRole
+from auction.enums.Tier import Tier
 
 
 class Player:

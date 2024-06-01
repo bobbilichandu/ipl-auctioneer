@@ -1,4 +1,5 @@
 import datetime
+import discord
 import uuid
 from typing import Dict
 
@@ -18,21 +19,32 @@ async def startAuction(ctx, args, guild_to_auction: Dict[str, GuildAuction]):
             'Auction already in progress. Finish the current auction to start a new one.'
         )
         return
-    await ctx.send("Starting Auction.....")
 
     guild_to_auction[guild_id] = GuildAuction(guild_id, uuid.uuid4(),
                                               ctx.channel.id,
                                               datetime.datetime.now(),
                                               ctx.author.id)
-    await ctx.send(
-        "Started an auction with Auction ID: " +
-        str(guild_to_auction[guild_id].auction_id) + '\n' +
-        "Owner of the auction is: " + "<@" +
-        str(guild_to_auction[guild_id].auction_owner) + ">\n" +
-        "Please add teams and base prices using addTeam command\n" +
-        "usage: \n > $auction addTeam <team_name> <base_price>" +
-        "You can also add team representatives using addRepresentative command\n"
+    embed = discord.Embed(title="Auction Started!!",
+                          color=discord.Color.dark_teal())
+    embed.add_field(name="",
+                    value="Auction ID: " +
+                    str(guild_to_auction[guild_id].auction_id) + "\n",
+                    inline=False)
+    embed.add_field(name="",
+                    value="Auction Owner: <@" +
+                    str(guild_to_auction[guild_id].auction_owner) + ">\n",
+                    inline=False)
+    embed.add_field(
+        name="",
+        value="Please add teams and base prices using addTeam command\n" +
+        "\nusage: \n\n > $auction addTeam <team_name> <base_price>\n",
+        inline=False)
+    embed.add_field(
+        name="",
+        value=
+        "Please add representatives for the teams using addRepresentative command\n"
         +
-        "usage: \n > $auction addRepresentative <team_name> <team_representative_name"
-    )
+        "\nusage: \n\n > $auction addRepresentative <team_name> <team_representative_name",
+        inline=False)
+    await ctx.send(embed=embed)
     return
